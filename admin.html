@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ASTRA Control | لوحة الإدارة</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Manrope:wght@700;800&display=swap" rel="stylesheet" />
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="admin.css" />
+    <link rel="stylesheet" href="admin-commerce.css?v=admin-sidebar-3" />
+  </head>
+  <body>
+    <div class="admin-shell">
+      <aside class="admin-sidebar">
+        <a class="admin-brand" href="orbit-1.html#home"><span><i data-lucide="orbit"></i></span> ASTRA <small>CONTROL</small></a>
+        <button class="admin-sidebar-close" id="adminSidebarClose" type="button" aria-label="إخفاء القائمة" title="إخفاء القائمة"><i data-lucide="panel-right-close"></i></button>
+        <nav aria-label="القائمة الرئيسية">
+          <div class="sidebar-group">
+            <span class="sidebar-group-label">إدارة السوق</span>
+            <a class="active" href="#dashboard"><i data-lucide="layout-dashboard"></i> لوحة النظرة العامة</a>
+            <a href="#users"><i data-lucide="users-round"></i> الحسابات</a>
+            <a href="#listings"><i data-lucide="clipboard-check"></i> مراجعة الإعلانات</a>
+            <a href="#deliveries"><i data-lucide="truck"></i> التوصيل</a>
+            <a href="#transactions"><i data-lucide="arrow-left-right"></i> العمليات المالية</a>
+          </div>
+          <div class="sidebar-group">
+            <span class="sidebar-group-label">المتجر الإلكتروني</span>
+            <a href="#commerce-dashboard"><i data-lucide="chart-no-axes-combined"></i> نظرة عامة</a>
+            <a href="#commerce-orders"><i data-lucide="package-check"></i> الطلبات</a>
+            <a href="#commerce-products"><i data-lucide="boxes"></i> المنتجات والمخزون</a>
+            <a href="#commerce-reviews"><i data-lucide="star"></i> تقييمات المنتجات</a>
+            <a href="#commerce-categories"><i data-lucide="tags"></i> التصنيفات</a>
+            <a href="#commerce-customers"><i data-lucide="contact-round"></i> العملاء</a>
+            <a href="#commerce-payments"><i data-lucide="credit-card"></i> المدفوعات</a>
+            <a href="#commerce-proofs"><i data-lucide="receipt-text"></i> إثباتات التحويل</a>
+            <a href="#commerce-shipping"><i data-lucide="truck"></i> الشحن والمناديب</a>
+            <a href="#commerce-coupons"><i data-lucide="ticket-percent"></i> الكوبونات</a>
+            <a href="#commerce-notifications"><i data-lucide="bell"></i> الإشعارات</a>
+            <a href="#commerce-reports"><i data-lucide="chart-pie"></i> التقارير والتدقيق</a>
+            <a href="#commerce-settings"><i data-lucide="settings-2"></i> إعدادات الدفع</a>
+          </div>
+          <div class="sidebar-group sidebar-group-market">
+            <span class="sidebar-group-label">اختصار</span>
+            <a href="orbit-1.html#market-listings"><i data-lucide="store"></i> فتح السوق</a>
+          </div>
+        </nav>
+        <button class="sidebar-logout" id="logoutButton"><i data-lucide="log-out"></i> تسجيل الخروج</button>
+      </aside>
+      <main class="admin-main">
+        <header class="admin-topbar"><button class="admin-mobile-menu" id="adminMenuButton" type="button" aria-label="إظهار القائمة" aria-expanded="true"><i data-lucide="menu"></i></button><div><span class="eyebrow">ASTRA CONTROL CENTER</span><h1>إدارة السوق</h1></div><span class="live-status"><i></i> النظام يعمل</span></header>
+        <section id="loginView" class="login-panel">
+          <div class="login-art"><i data-lucide="shield-check"></i><strong>من هنا تدير ASTRA</strong><span>الحسابات، الأرصدة، الإعلانات، والتقارير في مساحة منفصلة وآمنة.</span></div>
+          <form id="adminLoginForm"><h2>دخول المشرف</h2><p>استخدم حساب المشرف للوصول إلى مركز التحكم.</p><label>رقم الموبايل<input name="phone" type="tel" required placeholder="رقم المشرف" /></label><label>كلمة المرور<input name="password" type="password" required /></label><button class="primary-button" type="submit">فتح لوحة الإدارة <i data-lucide="arrow-left"></i></button><div class="form-error" id="loginError"></div></form>
+        </section>
+        <section id="dashboardView" class="hidden">
+          <div class="stats-grid" id="statsGrid"></div>
+          <section class="commerce-panel" id="commerce-dashboard">
+            <div class="commerce-heading"><div><span class="eyebrow">STORE OVERVIEW</span><h2>ملخص المتجر</h2></div><button class="outline-button" type="button" data-commerce-refresh>تحديث</button></div>
+            <div class="commerce-stats" id="commerceStats"></div>
+            <div class="commerce-dashboard-grid"><section><h3>أحدث الطلبات</h3><div id="latestCommerceOrders"></div></section><section><h3>مخزون منخفض</h3><div id="lowStockProducts"></div></section></div>
+          </section>
+          <section class="commerce-panel" id="commerce-orders">
+            <div class="commerce-heading"><div><span class="eyebrow">ORDER MANAGEMENT</span><h2>طلبات المتجر</h2></div><button class="outline-button" type="button" data-export-commerce="orders">تصدير CSV</button></div>
+            <div class="commerce-filters"><input id="commerceOrderSearch" type="search" placeholder="رقم الطلب أو العميل" /><select id="commerceOrderStatus"><option value="">كل الحالات</option><option value="new">جديد</option><option value="payment_pending">بانتظار الدفع</option><option value="preparing">قيد التجهيز</option><option value="ready_for_delivery">جاهز للتوصيل</option><option value="assigned">تم تعيين مندوب</option><option value="out_for_delivery">قيد التوصيل</option><option value="delivered">تم التسليم</option><option value="cancelled">ملغي</option></select><select id="commercePaymentFilter"><option value="">كل المدفوعات</option><option value="paid">مدفوع</option><option value="processing">قيد المراجعة</option><option value="unpaid">غير مدفوع</option><option value="failed">فشل</option><option value="collected">تم التحصيل</option></select></div>
+            <div class="commerce-table" id="commerceOrdersTable"></div>
+          </section>
+          <section class="commerce-panel" id="commerce-products">
+            <div class="commerce-heading"><div><span class="eyebrow">CATALOG & INVENTORY</span><h2>المنتجات والمخزون</h2></div></div>
+            <form id="commerceProductForm" class="commerce-form"><input name="name" required maxlength="160" placeholder="اسم المنتج" /><input name="sku" maxlength="80" placeholder="SKU اختياري" /><input name="price" type="number" min="0.01" step="0.01" required placeholder="السعر" /><input name="salePrice" type="number" min="0" step="0.01" placeholder="سعر العرض" /><input name="costPrice" type="number" min="0" step="0.01" placeholder="التكلفة" /><input name="stock" type="number" min="0" step="1" required placeholder="المخزون" /><input name="lowStockThreshold" type="number" min="0" value="5" placeholder="تنبيه المخزون" /><select name="categoryId" id="commerceProductCategory"><option value="">بدون تصنيف</option></select><input name="imageFile" type="file" accept="image/jpeg,image/png,image/webp" aria-label="صورة المنتج" /><input name="imageUrl" type="url" placeholder="أو رابط صورة HTTPS" /><select name="status"><option value="draft">مسودة</option><option value="published">نشر</option></select><textarea class="form-span" name="description" maxlength="5000" rows="2" placeholder="وصف المنتج ومواصفاته"></textarea><button class="primary-button" type="submit">إضافة المنتج</button></form>
+            <div class="commerce-filters"><input id="commerceProductSearch" type="search" placeholder="ابحث بالاسم أو SKU" /><select id="commerceProductStatus"><option value="all">كل الحالات</option><option value="draft">مسودة</option><option value="published">منشور</option><option value="archived">مؤرشف</option></select></div><div class="commerce-table" id="commerceProductsTable"></div>
+          </section>
+          <section class="commerce-panel" id="commerce-categories"><div class="commerce-heading"><div><span class="eyebrow">PRODUCT TAXONOMY</span><h2>التصنيفات</h2></div></div><form id="commerceCategoryForm" class="commerce-inline-form"><input name="name" required maxlength="100" placeholder="اسم التصنيف" /><input name="description" maxlength="500" placeholder="وصف التصنيف" /><button class="primary-button" type="submit">إضافة تصنيف</button></form><div id="commerceCategoriesList" class="commerce-chip-list"></div></section>
+          <section class="commerce-panel" id="commerce-reviews"><div class="commerce-heading"><div><span class="eyebrow">PRODUCT REVIEWS</span><h2>مراجعة تقييمات المنتجات</h2></div></div><div class="commerce-table" id="commerceReviewsTable"></div></section>
+          <section class="commerce-panel" id="commerce-customers"><div class="commerce-heading"><div><span class="eyebrow">CUSTOMER DIRECTORY</span><h2>العملاء</h2></div></div><div class="commerce-filters"><input id="commerceCustomerSearch" type="search" placeholder="ابحث بالاسم أو الهاتف" /></div><div class="commerce-table" id="commerceCustomersTable"></div></section>
+          <section class="commerce-panel" id="commerce-payments"><div class="commerce-heading"><div><span class="eyebrow">PAYMENT LEDGER</span><h2>المدفوعات</h2></div></div><div class="commerce-filters"><select id="commercePaymentsFilter"><option value="">كل الحالات</option><option value="paid">مدفوع</option><option value="processing">قيد المراجعة</option><option value="pending">معلق</option><option value="failed">فشل</option><option value="collected">تم التحصيل</option><option value="refunded">مسترد</option></select></div><div class="commerce-table" id="commercePaymentsTable"></div></section>
+          <section class="commerce-panel" id="commerce-proofs"><div class="commerce-heading"><div><span class="eyebrow">TRANSFER REVIEW</span><h2>إثباتات التحويل</h2></div></div><div class="commerce-table" id="commerceProofsTable"></div></section>
+          <section class="commerce-panel" id="commerce-shipping"><div class="commerce-heading"><div><span class="eyebrow">SHIPPING & DELIVERY</span><h2>الشحن والمناديب</h2></div></div><div class="commerce-operations-grid"><section><h3>طرق الشحن</h3><form id="commerceShippingForm" class="commerce-inline-form"><input name="name" required placeholder="اسم طريقة الشحن" /><input name="price" type="number" min="0" step="0.01" required placeholder="السعر" /><input name="regions" placeholder="المناطق مفصولة بفاصلة" /><button class="primary-button" type="submit">إضافة طريقة</button></form><div id="commerceShippingList"></div></section><section><h3>إضافة مندوب</h3><form id="commerceAgentForm" class="commerce-form"><input name="name" required placeholder="اسم المندوب" /><input name="phone" type="tel" required placeholder="الهاتف" /><input name="area" placeholder="المنطقة" /><input name="password" type="password" minlength="10" required placeholder="كلمة مرور ١٠ أحرف على الأقل" /><button class="primary-button" type="submit">حفظ المندوب</button></form><div class="commerce-table" id="commerceAgentsTable"></div></section></div></section>
+          <section class="commerce-panel" id="commerce-coupons"><div class="commerce-heading"><div><span class="eyebrow">DISCOUNTS</span><h2>الكوبونات</h2></div></div><form id="commerceCouponForm" class="commerce-inline-form"><input name="code" required maxlength="40" placeholder="كود الكوبون" /><select name="kind"><option value="percent">نسبة مئوية</option><option value="fixed">مبلغ ثابت</option></select><input name="value" type="number" min="0.01" step="0.01" required placeholder="قيمة الخصم" /><input name="usageLimit" type="number" min="1" placeholder="حد الاستخدامات" /><input name="minOrder" type="number" min="0" placeholder="الحد الأدنى" /><button class="primary-button" type="submit">إنشاء كوبون</button></form><div id="commerceCouponsList" class="commerce-chip-list"></div></section>
+          <section class="commerce-panel" id="commerce-settings"><div class="commerce-heading"><div><span class="eyebrow">PAYMENT CONFIGURATION</span><h2>بيانات التحويل</h2></div></div><form id="commerceSettingsForm" class="commerce-form"><input name="transferBeneficiary" required placeholder="اسم المستفيد" /><input name="transferChannel" required placeholder="البنك أو المحفظة" /><input name="transferAccount" required placeholder="رقم الحساب أو المحفظة" /><button class="primary-button" type="submit">حفظ البيانات</button></form><p class="commerce-note">لا يتم اعتماد إيصال التحويل تلقائيًا؛ يجب التحقق من وصول الأموال ومراجعة الإثبات.</p></section>
+          <section class="commerce-panel" id="commerce-notifications"><div class="commerce-heading"><div><span class="eyebrow">ADMIN INBOX</span><h2>إشعارات الإدارة</h2></div></div><div class="commerce-table" id="commerceNotificationsList"></div></section>
+          <section class="commerce-panel" id="commerce-reports"><div class="commerce-heading"><div><span class="eyebrow">REPORTS & AUDIT</span><h2>التقارير وسجل التدقيق</h2></div><button class="outline-button" type="button" data-export-commerce="report">تصدير التقرير</button></div><div class="commerce-dashboard-grid"><section><h3>المبيعات الشهرية</h3><div id="commerceMonthlyReport"></div></section><section><h3>آخر العمليات</h3><div id="commerceAuditLog"></div></section></div></section>
+          <div class="admin-quickbar"><button class="quick-action" data-refresh><i data-lucide="refresh-cw"></i><span><strong>تحديث البيانات</strong><small>آخر نسخة من قاعدة البيانات</small></span></button><button class="quick-action" data-filter-pending><i data-lucide="clock-3"></i><span><strong>المعلّقون</strong><small>راجع الحسابات والإعلانات</small></span></button><button class="quick-action" data-export><i data-lucide="download"></i><span><strong>تصدير التقرير</strong><small>ملف CSV للعمليات</small></span></button><div class="system-health"><i></i><span><strong>قاعدة البيانات</strong><small>متصلة وآمنة</small></span></div></div>
+          <div class="admin-grid">
+            <section class="admin-panel" id="users"><div class="panel-heading"><div><span class="eyebrow">ACCOUNT DIRECTORY</span><h2>حسابات السوق</h2></div><div class="heading-tools"><select id="userReviewFilter" aria-label="حالة التسجيل"><option value="all">كل الحسابات</option><option value="new">تسجيلات جديدة</option><option value="reviewed">تمت مراجعتها</option></select><select id="userRoleFilter" aria-label="تصفية نوع الحساب"><option value="all">كل الأنواع</option><option value="store">المتاجر</option><option value="customer">العملاء</option><option value="courier">المناديب</option><option value="admin">المشرفون</option></select><input id="userSearch" type="search" placeholder="اسم، هاتف، أو معرّف" /><button class="primary-button" type="button" id="adminCreateButton"><i data-lucide="user-plus"></i> مشرف جديد</button></div></div><div id="usersTable" class="users-table"></div></section>
+            <section class="admin-panel" id="listings"><div class="panel-heading"><div><span class="eyebrow">CONTENT MODERATION</span><h2>مراجعة الإعلانات</h2></div><select id="listingStatusFilter" aria-label="تصفية حالة الإعلان"><option value="all">كل الحالات</option><option value="pending">قيد المراجعة</option><option value="published">منشور</option><option value="rejected">مرفوض</option></select></div><div id="listingsTable" class="listings-table"></div></section>
+            <section class="admin-panel" id="deliveries"><div class="panel-heading"><div><span class="eyebrow">DELIVERY OPERATIONS</span><h2>مركز التوصيل</h2></div><span class="panel-count" id="deliveryCount">0 طلب</span></div><div id="deliveryTable" class="delivery-table"></div></section>
+            <section class="admin-panel" id="transactions"><div class="panel-heading"><div><span class="eyebrow">FINANCIAL LEDGER</span><h2>آخر العمليات المالية</h2></div></div><div id="transactionsList" class="transactions-list"></div></section>
+          </div>
+          <section class="admin-panel admin-settings"><div class="panel-heading"><div><span class="eyebrow">MARKET SETTINGS</span><h2>إعدادات التشغيل</h2></div></div><div class="settings-grid"><label><span>اعتماد الإعلانات للحسابات الجديدة</span><select id="settingListings"><option value="manual">مراجعة يدوية</option><option value="auto">اعتماد تلقائي</option></select></label><label><span>رسوم التوصيل</span><input id="settingDeliveryFee" type="number" value="5" min="0" max="100" />%</label><label><span>حالة السوق</span><select id="settingMarket"><option value="open">مفتوح</option><option value="paused">متوقف مؤقتًا</option></select></label></div></section>
+        </section>
+      </main>
+    </div>
+    <div class="toast" id="toast"></div>
+    <div class="report-modal hidden" id="adminCreateModal"><div class="report-dialog"><button class="close-button" id="closeAdminCreate" aria-label="إغلاق"><i data-lucide="x"></i></button><span class="eyebrow">NEW ADMINISTRATOR</span><h2>إنشاء حساب مشرف</h2><p>سيظل الحساب قيد المراجعة حتى تعتمده من قائمة الحسابات.</p><form id="adminCreateForm"><label>اسم المشرف<input name="name" required autocomplete="name" /></label><label>رقم الموبايل<input name="phone" type="tel" required autocomplete="tel" /></label><label>نوع الصلاحية<select name="scope" required><option value="product_manager">إدارة المنتجات والمخزون</option><option value="order_manager">إدارة الطلبات والشحن</option><option value="payment_manager">إدارة المدفوعات</option><option value="customer_manager">إدارة العملاء</option><option value="content_manager">إدارة المحتوى</option></select></label><label>كلمة المرور<input name="password" type="password" minlength="10" required autocomplete="new-password" /></label><label>تأكيد كلمة المرور<input name="passwordConfirm" type="password" minlength="10" required autocomplete="new-password" /></label><div class="form-error" id="adminCreateError"></div><button class="primary-button" type="submit">إرسال للمراجعة <i data-lucide="user-plus"></i></button></form></div></div>
+    <div class="report-modal hidden" id="reportModal"><div class="report-dialog"><button class="close-button" id="closeReport" aria-label="إغلاق"><i data-lucide="x"></i></button><span class="eyebrow">ACCOUNT REPORT</span><h2 id="reportTitle">تقرير الحساب</h2><nav class="report-tabs" aria-label="أنواع التقارير"><button class="active" type="button" data-report-category="transactions">المعاملات</button><button type="button" data-report-category="publishing">النشر</button><button type="button" data-report-category="purchases">الشراء</button><button type="button" data-report-category="recharges">الشحن</button></nav><div id="reportList"></div></div></div>
+    <style>
+      .admin-quickbar{display:grid;grid-template-columns:repeat(3,1fr) 1fr;gap:10px;margin-bottom:18px}.quick-action,.system-health{display:flex;align-items:center;gap:10px;padding:12px;border:1px solid var(--line);border-radius:9px;background:#10282f;color:var(--text);text-align:right}.quick-action:hover{border-color:var(--teal);background:#15343b}.quick-action svg{width:18px;color:var(--teal)}.quick-action span,.system-health span{display:grid;gap:2px}.quick-action strong,.system-health strong{font-size:10px}.quick-action small,.system-health small{color:var(--muted);font-size:8px}.system-health i{width:9px;height:9px;border-radius:50%;background:#64d294;box-shadow:0 0 0 5px #64d29420}.heading-tools{display:flex;gap:7px}.heading-tools select,.panel-heading>select{padding:8px;border:1px solid var(--line);border-radius:7px;background:#0b2026;color:var(--text);font-size:10px}.listings-table,.delivery-table{display:grid;gap:8px}.listing-row,.delivery-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px;border:1px solid #23474e;border-radius:8px;background:#0d2229}.listing-main,.delivery-row>div{display:grid;gap:4px;min-width:0}.listing-main strong,.delivery-row strong{font-size:11px}.listing-main span,.delivery-row span,.delivery-row small{color:var(--muted);font-size:9px}.listing-actions{display:flex;align-items:center;gap:6px;flex-wrap:wrap;justify-content:flex-end}.status-badge{display:inline-flex;padding:4px 7px;border-radius:999px;background:#29494d;color:#b9d9d4;font-size:9px;white-space:nowrap}.status-badge.pending{background:#58482c;color:#ffd27b}.status-badge.published{background:#20534d;color:#9be2d4}.status-badge.rejected{background:#56363e;color:#ffb5b5}.admin-settings{margin-top:18px}.settings-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.settings-grid label{display:grid;gap:6px;color:var(--muted);font-size:10px}.settings-grid input,.settings-grid select{padding:10px;border:1px solid var(--line);border-radius:7px;background:#0b2026;color:var(--text);outline:0}@media(max-width:900px){.admin-quickbar{grid-template-columns:repeat(2,1fr)}.settings-grid{grid-template-columns:1fr 1fr}}@media(max-width:520px){.admin-quickbar,.settings-grid{grid-template-columns:1fr}.heading-tools{display:grid}.listing-row,.delivery-row{align-items:flex-start;flex-direction:column}.listing-actions{justify-content:flex-start}}
+    </style>
+    <script src="admin.js?v=admin-sidebar-3"></script>
+  </body>
+    <style>
+      .heading-tools { flex-wrap: wrap; min-width: 0; }
+      .heading-tools input { min-width: 0; }
+    </style>
+</html>

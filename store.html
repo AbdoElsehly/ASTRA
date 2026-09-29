@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="تسوق منتجات ASTRA، أضف إلى سلتك وتابع طلبك حتى التوصيل." />
+    <meta property="og:title" content="ASTRA | المتجر الإلكتروني" />
+    <meta property="og:description" content="تسوق منتجات ASTRA بأمان وسهولة." />
+    <title>ASTRA | المتجر الإلكتروني</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet" />
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="store.css?v=activation-2" />
+  </head>
+  <body>
+    <header class="shop-header">
+      <div class="shop-header-inner">
+        <button class="icon-button mobile-menu" id="menuButton" aria-label="فتح القائمة"><i data-lucide="menu"></i></button>
+        <a class="shop-brand" href="#home" data-route="home"><span class="brand-mark"><i data-lucide="orbit"></i></span><span>ASTRA</span></a>
+        <nav class="shop-nav" id="shopNav" aria-label="التنقل الرئيسي">
+          <a href="#home" data-route="home">الرئيسية</a>
+          <a href="#categories" data-route="categories">التصنيفات</a>
+          <a href="#products" data-route="products">المنتجات</a>
+          <a href="#deals" data-route="deals">العروض</a>
+        </nav>
+        <form class="shop-search" id="headerSearch"><i data-lucide="search"></i><input id="headerSearchInput" type="search" placeholder="ابحث عن منتج" aria-label="ابحث عن منتج" /><button type="submit">بحث</button></form>
+        <div class="shop-actions">
+          <button class="icon-button" type="button" data-route="favorites" aria-label="المفضلة" title="المفضلة"><i data-lucide="heart"></i><span class="action-count hidden" id="favoriteCount">0</span></button>
+          <button class="account-button" type="button" id="accountButton"><i data-lucide="user-round"></i><span id="accountLabel">دخول</span></button>
+          <button class="cart-button" type="button" data-route="cart"><i data-lucide="shopping-bag"></i><span>السلة</span><b id="cartCount">0</b></button>
+        </div>
+      </div>
+    </header>
+
+    <main class="shop-main" id="shopMain">
+      <section class="shop-page" data-page="home">
+        <div class="hero-band">
+          <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1800&q=85" alt="تشكيلة أزياء ومنتجات مختارة" fetchpriority="high" />
+          <div class="hero-shade"></div>
+          <div class="hero-copy"><span class="eyebrow">اختيارات ASTRA</span><h1>كل اللي بتحبه،<br /><em>في مكان واحد.</em></h1><p>منتجات مختارة بعناية، وسلة واضحة، ومتابعة لطلبك من أول خطوة لحد باب البيت.</p><button class="button button-primary" data-route="products">تسوق الآن <i data-lucide="arrow-left"></i></button></div>
+          <div class="hero-caption"><i data-lucide="package-check"></i><span>تجربة شراء أسهل</span></div>
+        </div>
+        <section class="shop-section" id="homeCategories"><div class="section-title"><div><span class="eyebrow">اكتشف حسب اهتمامك</span><h2>التصنيفات</h2></div><a href="#categories" data-route="categories">كل التصنيفات <i data-lucide="arrow-left"></i></a></div><div class="category-grid" id="homeCategoryList"></div></section>
+        <section class="shop-section tint-section"><div class="section-title"><div><span class="eyebrow">اختياراتنا</span><h2>منتجات مميزة</h2></div><a href="#products" data-route="products">كل المنتجات <i data-lucide="arrow-left"></i></a></div><div class="product-grid" id="featuredProducts"></div></section>
+        <section class="shop-section"><div class="section-title"><div><span class="eyebrow">الأكثر طلبًا</span><h2>الأكثر مبيعًا</h2></div></div><div class="product-grid" id="popularProducts"></div></section>
+        <section class="deal-band" id="deals"><div><span class="eyebrow">لفترة محدودة</span><h2>اكتشف عروض ASTRA</h2><p>تابع المنتجات المميزة والأسعار المخفضة في مكان واحد.</p></div><button class="button button-outline" data-route="products">تصفح العروض <i data-lucide="arrow-left"></i></button></section>
+      </section>
+
+      <section class="shop-page hidden" data-page="categories"><div class="page-heading"><div><span class="eyebrow">تسوق بطريقتك</span><h1>كل التصنيفات</h1></div></div><div class="category-grid category-grid-large" id="allCategoryList"></div></section>
+      <section class="shop-page hidden" data-page="products"><div class="page-heading"><div><span class="eyebrow">كتالوج ASTRA</span><h1 id="productsHeading">المنتجات</h1></div><span class="result-count" id="resultCount"></span></div><div class="catalog-toolbar"><label class="catalog-filter"><i data-lucide="list-filter"></i><select id="categoryFilter" aria-label="التصنيف"><option value="">كل التصنيفات</option></select></label><label class="catalog-filter"><i data-lucide="arrow-down-wide-narrow"></i><select id="sortFilter" aria-label="ترتيب المنتجات"><option value="featured">المميزة أولًا</option><option value="newest">الأحدث</option><option value="price-low">السعر الأقل</option><option value="price-high">السعر الأعلى</option></select></label><span class="search-term hidden" id="searchTerm"></span></div><div class="product-grid" id="catalogProducts"></div></section>
+      <section class="shop-page hidden" data-page="favorites"><div class="page-heading"><div><span class="eyebrow">قائمتك الخاصة</span><h1>المفضلة</h1></div></div><div class="product-grid" id="favoriteProducts"></div></section>
+      <section class="shop-page hidden" data-page="product"><div id="productDetails"></div></section>
+
+      <section class="shop-page hidden" data-page="cart"><div class="page-heading"><div><span class="eyebrow">قبل ما تكمل</span><h1>سلة التسوق</h1></div></div><div class="cart-layout"><div id="cartItems" class="cart-items"></div><aside class="summary-panel" id="cartSummary"></aside></div></section>
+      <section class="shop-page hidden" data-page="checkout"><div class="page-heading"><div><span class="eyebrow">خطوة واحدة تفصلك</span><h1>إتمام الطلب</h1></div></div><div class="checkout-layout"><form id="checkoutForm" class="checkout-form"><section class="checkout-block"><span class="step-label">١ · بيانات التوصيل</span><label class="saved-address-field">عنوان محفوظ<select id="savedAddressSelect" name="addressId"><option value="">إدخال عنوان جديد</option></select></label><div class="form-grid"><label>اسم المستلم<input name="recipient_name" required maxlength="100" autocomplete="name" /></label><label>رقم الهاتف<input name="phone" type="tel" required maxlength="30" autocomplete="tel" /></label><label>المحافظة / المدينة<input name="city" required maxlength="100" autocomplete="address-level1" /></label><label>المنطقة<input name="area" maxlength="100" autocomplete="address-level2" /></label><label class="full-field">العنوان بالتفصيل<input name="line1" required maxlength="250" autocomplete="street-address" /></label><label class="full-field">ملاحظات التوصيل<textarea name="notes" maxlength="500" rows="3"></textarea></label></div></section><section class="checkout-block"><span class="step-label">٢ · طريقة الشحن</span><div id="shippingChoices" class="choice-list"></div></section><section class="checkout-block"><span class="step-label">٣ · طريقة الدفع</span><div class="choice-list"><label class="choice-row"><input type="radio" name="paymentMethod" value="cod" checked /><span><strong>الدفع عند الاستلام</strong><small>ادفع للمندوب عند وصول طلبك.</small></span><i data-lucide="banknote"></i></label><label class="choice-row"><input type="radio" name="paymentMethod" value="bank_transfer" /><span><strong>تحويل بنكي / محفظة</strong><small>ارفع الإيصال بعد تأكيد الطلب. الدفع يظل قيد المراجعة.</small></span><i data-lucide="landmark"></i></label></div></section><section class="checkout-block"><span class="step-label">٤ · كوبون الخصم</span><div class="coupon-row"><input id="couponInput" placeholder="كود الخصم" maxlength="40" /><button class="button button-outline" id="applyCoupon" type="button">تطبيق</button><span id="couponMessage" role="status"></span></div></section><button class="button button-primary confirm-order" type="submit">تأكيد الطلب <i data-lucide="arrow-left"></i></button></form><aside class="summary-panel" id="checkoutSummary"></aside></div></section>
+      <section class="shop-page hidden" data-page="success"><div id="orderSuccess"></div></section>
+      <section class="shop-page hidden" data-page="orders"><div class="page-heading"><div><span class="eyebrow">كل مشترياتك</span><h1>طلباتي</h1></div></div><div id="ordersList" class="orders-list"></div></section>
+      <section class="shop-page hidden" data-page="order"><div id="orderDetails"></div></section>
+      <section class="shop-page hidden" data-page="profile"><div class="page-heading"><div><span class="eyebrow">حسابك</span><h1>الملف الشخصي</h1></div></div><div id="profilePanel" class="summary-panel profile-panel"></div></section>
+      <section class="shop-page hidden" data-page="forgot"><div class="info-page"><span class="eyebrow">استعادة الحساب</span><h1>نسيت كلمة المرور؟</h1><p>استعادة كلمة المرور تحتاج ربط مزود رسائل موثوق. تواصل مع الدعم لتأكيد ملكية الحساب.</p><a class="button button-outline" href="tel:+201037572742">اتصل بالدعم</a></div></section>
+      <section class="shop-page hidden" data-page="contact"><div class="info-page"><span class="eyebrow">نحن هنا للمساعدة</span><h1>تواصل معنا</h1><p>فريق ASTRA جاهز لمساعدتك في المنتجات والطلبات.</p><a class="button button-primary" href="https://wa.me/201037572742">تواصل عبر واتساب</a></div></section>
+      <section class="shop-page hidden" data-page="faq"><div class="info-page"><span class="eyebrow">إجابات سريعة</span><h1>الأسئلة الشائعة</h1><details><summary>إزاي أتابع طلبي؟</summary><p>افتح «طلباتي» ثم اختر الطلب لمشاهدة حالته وخطوات التوصيل.</p></details><details><summary>هل التحويل البنكي يؤكد الطلب تلقائيًا؟</summary><p>لا. يتم مراجعة الإيصال والتحقق من وصول المبلغ قبل اعتماد الدفع.</p></details><details><summary>إمتى أدفع لو اخترت الدفع عند الاستلام؟</summary><p>تدفع المبلغ الموضح في الطلب للمندوب وقت الاستلام.</p></details></div></section>
+      <section class="shop-page hidden" data-page="terms"><div class="info-page"><span class="eyebrow">استخدام المتجر</span><h1>الشروط والأحكام</h1><p>تخضع الطلبات لتوفر المخزون وصحة بيانات التوصيل. لا يُعتمد الدفع بالتحويل إلا بعد مراجعة موثوقة، ولا تحفظ ASTRA بيانات البطاقات.</p></div></section>
+      <section class="shop-page hidden" data-page="privacy"><div class="info-page"><span class="eyebrow">بياناتك بأمان</span><h1>سياسة الخصوصية</h1><p>نستخدم بيانات الاتصال والعنوان لتنفيذ الطلب والتوصيل وإرسال تحديثاته. لا نطلب أو نخزن بيانات بطاقات الدفع في هذا الإصدار.</p></div></section>
+      <section class="shop-page hidden" data-page="error"><div class="empty-state"><i data-lucide="triangle-alert"></i><h2>تعذر تحميل البيانات</h2><p>تحقق من الاتصال وحاول مرة أخرى.</p><button class="button button-outline" data-retry>إعادة المحاولة</button></div></section>
+    </main>
+
+    <footer class="shop-footer"><div class="footer-main"><a class="shop-brand" href="#home" data-route="home"><span class="brand-mark"><i data-lucide="orbit"></i></span><span>ASTRA</span></a><p>تجربة شراء بسيطة وواضحة من الاختيار حتى الاستلام.</p><div><strong>خدمة العملاء</strong><a href="tel:+201037572742">01037572742</a><a href="https://wa.me/201037572742">واتساب</a></div><div><strong>روابط مهمة</strong><a href="#faq" data-route="faq">الأسئلة الشائعة</a><a href="#terms" data-route="terms">الشروط والأحكام</a><a href="#privacy" data-route="privacy">الخصوصية</a></div><div><strong>المتجر</strong><a href="#products" data-route="products">المنتجات</a><a href="#orders" data-route="orders">طلباتي</a><a href="#contact" data-route="contact">تواصل معنا</a></div></div><div class="footer-bottom"><span>© ٢٠٢٦ ASTRA</span><span>الدفع عند الاستلام · التحويل البنكي</span></div></footer>
+
+    <div class="modal-backdrop hidden" id="authModal"><section class="auth-dialog" role="dialog" aria-modal="true" aria-labelledby="authTitle"><button class="modal-close" type="button" data-close-auth aria-label="إغلاق"><i data-lucide="x"></i></button><span class="eyebrow">أهلاً بيك في ASTRA</span><h2 id="authTitle">تسجيل الدخول</h2><div class="auth-tabs"><button class="active" type="button" data-auth-mode="login">دخول</button><button type="button" data-auth-mode="signup">حساب جديد</button></div><form id="authForm"><label class="signup-only hidden">الاسم<input name="name" autocomplete="name" /></label><label>رقم الهاتف<input name="phone" type="tel" required autocomplete="tel" /></label><label>كلمة المرور<input name="password" type="password" required minlength="10" autocomplete="current-password" /></label><a href="#forgot" data-route="forgot" id="forgotLink">نسيت كلمة المرور؟</a><p class="form-error" id="authError" role="alert"></p><button class="button button-primary" type="submit" id="authSubmit">تسجيل الدخول</button></form></section></div>
+    <div class="toast" id="shopToast" role="status" aria-live="polite"></div>
+    <script src="store.js?v=activation-2"></script>
+  </body>
+</html>

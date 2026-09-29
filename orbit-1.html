@@ -1,0 +1,729 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ASTRA | سوقك الرقمي</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Manrope:wght@700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="orbit-1.css?v=activation-mobile-2" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-inner">
+        <button class="mobile-menu icon-button" aria-label="فتح القائمة">
+          <i data-lucide="menu"></i>
+        </button>
+        <a class="brand" href="#home" aria-label="ASTRA"
+          ><span class="brand-mark"><i data-lucide="orbit"></i></span
+          ><span>ASTRA</span></a
+        >
+        <nav class="main-nav" aria-label="التنقل الرئيسي">
+          <a class="active" href="#market-listings" data-view-link="market-listings">السوق</a
+          ><a href="#wanted-products" data-view-link="wanted-products">طلبات المنتجات</a
+          ><a href="#market-reviews" data-view-link="market-reviews">تقييمات السوق</a
+          ><a href="#wallet" data-view-link="wallet">الصفحة الشخصية</a
+          ><a href="#help" data-view-link="help">المساعدة</a>
+        </nav>
+        <div class="header-actions">
+          <button class="admin-access-trigger hidden" id="adminAccessButton" type="button" aria-label="بوابة المشرفين والمناديب" title="دخول المشرفين والمناديب">
+            <i data-lucide="circle-alert"></i>
+          </button>
+          <button
+            class="theme-toggle"
+            id="themeToggle"
+            type="button"
+            aria-label="تفعيل الوضع الليلي"
+            title="تفعيل الوضع الليلي"
+          >
+            <i class="sun-icon" data-lucide="sun"></i
+            ><i class="moon-icon" data-lucide="moon"></i>
+          </button>
+          <button
+            class="icon-button notifications-button hidden"
+            id="notificationsButton"
+            type="button"
+            aria-label="الإشعارات"
+            title="الإشعارات"
+          >
+            <i data-lucide="bell"></i>
+            <span class="notifications-badge hidden" id="notificationsBadge">0</span>
+          </button>
+          <div id="accountActions">
+            <button class="outline-button" data-open-auth="login">
+              تسجيل الدخول</button
+            ><button class="primary-button" data-open-auth="signup">
+              إنشاء حساب
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main id="app">
+      <section class="market-view" id="homeView" data-view="home">
+        <div class="page-shell">
+          <section class="welcome-section">
+            <div>
+              <span class="eyebrow"
+                ><i data-lucide="compass"></i> سوق مفتوح للجميع</span
+              >
+              <h1>اشتري ما تحتاجه،<br /><em>وبِع ما تتقنه.</em></h1>
+              <p>
+                مكان بسيط وآمن يجمع أصحاب المتاجر، مقدمي الخدمات، والعملاء في
+                تجربة واحدة.
+              </p>
+            </div>
+            <div class="welcome-actions">
+              <button class="primary-button large" data-open-auth="signup">
+                <i data-lucide="store"></i> ابدأ متجرك</button
+              ><button class="text-button" data-open-auth="login">
+                لديك حساب؟ دخول <i data-lucide="arrow-left"></i>
+              </button>
+            </div>
+            <div class="welcome-art" aria-hidden="true">
+              <div class="art-orbit art-orbit-one"></div>
+              <div class="art-orbit art-orbit-two"></div>
+              <div class="art-center">
+                <i data-lucide="shopping-bag"></i
+                ><span>سوقك<br />في مكان واحد</span>
+              </div>
+              <div class="art-note art-note-top">
+                <span class="art-note-icon coral"
+                  ><i data-lucide="badge-check"></i></span
+                ><span
+                  ><strong>اختيارات موثوقة</strong
+                  ><small>بإشراف ASTRA</small></span
+                >
+              </div>
+              <div class="art-note art-note-bottom">
+                <span class="art-note-icon teal"
+                  ><i data-lucide="wallet-cards"></i></span
+                ><span
+                  ><strong>رصيدك واضح</strong><small>تابع كل عملية</small></span
+                >
+              </div>
+              <span class="art-spark spark-one">✦</span
+              ><span class="art-spark spark-two">✦</span>
+            </div>
+          </section>
+          <button class="primary-button market-entry-button" data-view-link="market-listings">
+            <i data-lucide="store"></i> تصفح السوق
+          </button>
+        </div>
+      </section>
+      <section class="market-listings-view hidden" id="marketListingsView" data-view="market-listings">
+        <div class="page-shell market-listings-shell">
+          <div class="market-page-heading">
+            <div>
+              <span class="section-kicker"><i data-lucide="store"></i> سوق ASTRA</span>
+              <h1>المنتجات والخدمات</h1>
+              <p>اختار النوع والتصنيف وشوف العروض المنشورة بوضوح.</p>
+            </div>
+            <div class="market-heading-actions">
+              <button class="outline-button" data-view-link="wallet"><i data-lucide="user-round"></i> إعلاناتي</button>
+              <button class="primary-button" type="button" data-action="create-ad"><i data-lucide="plus"></i> إعلان جديد</button>
+              <button class="outline-button" data-view-link="home"><i data-lucide="arrow-right"></i> الرئيسية</button>
+            </div>
+          </div>
+          <div class="market-overview" aria-label="ملخص السوق">
+            <div class="market-overview-card"><span class="market-overview-icon"><i data-lucide="layers-3"></i></span><div><strong id="marketActiveCount">0</strong><span>إعلان نشط</span></div></div>
+            <div class="market-overview-card"><span class="market-overview-icon coral"><i data-lucide="store"></i></span><div><strong id="marketStoreCount">0</strong><span>متجر ومقدم خدمة</span></div></div>
+            <div class="market-overview-card"><span class="market-overview-icon gold"><i data-lucide="badge-check"></i></span><div><strong>١٠٠٪</strong><span>إعلانات معتمدة</span></div></div>
+            <div class="market-overview-card"><span class="market-overview-icon blue"><i data-lucide="truck"></i></span><div><strong>متاح</strong><span>توصيل داخل السوق</span></div></div>
+          </div>
+          <section class="market-tools">
+            <div class="search-box">
+              <i data-lucide="search"></i
+              ><input
+                id="marketSearch"
+                type="search"
+                placeholder="ابحث عن منتج أو خدمة"
+                aria-label="البحث في السوق"
+              /><button id="marketSearchButton">بحث</button>
+            </div>
+            <div class="market-tools-side">
+              <div class="market-filter">
+                <button class="active" data-market-filter="all">الكل</button
+                ><button data-market-filter="products">منتجات</button
+                ><button data-market-filter="services">خدمات</button>
+              </div>
+              <button class="outline-button agents-button" type="button" data-open-agents>
+                <i data-lucide="truck"></i> مناديب السوق
+              </button>
+              <label class="market-category-filter hidden" id="marketCategoryWrap">
+                <span>التصنيف</span>
+                <select id="marketCategory" aria-label="فلترة التصنيف">
+                  <option value="all">كل التصنيفات</option>
+                </select>
+              </label>
+            </div>
+          </section>
+          <div class="market-commandbar">
+            <div class="market-category-pills">
+              <span>استكشف:</span>
+              <button class="active" data-market-pill="all">الكل</button>
+              <button data-market-pill="product">إلكترونيات</button>
+              <button data-market-pill="service">خدمات رقمية</button>
+              <button data-market-pill="store">المنزل</button>
+              <button data-market-pill="store">أزياء</button>
+            </div>
+            <div class="market-sort-tools">
+              <label>ترتيب حسب <select id="marketSort" aria-label="ترتيب الإعلانات"><option value="featured">الأكثر تميزًا</option><option value="newest">الأحدث</option><option value="price-low">السعر: الأقل</option><option value="price-high">السعر: الأعلى</option></select></label>
+              <div class="market-view-switch" aria-label="طريقة العرض"><button class="active" type="button" data-market-layout="grid" title="عرض شبكي"><i data-lucide="grid-2x2"></i></button><button type="button" data-market-layout="list" title="عرض قائمة"><i data-lucide="list"></i></button></div>
+            </div>
+          </div>
+          <div id="marketHighlights"></div>
+          <section class="market-results-panel is-empty" id="marketResults">
+            <div class="empty-icon"><i data-lucide="store"></i></div>
+            <span class="section-kicker">السوق يتجهز</span>
+            <h2>لا توجد إعلانات منشورة بعد</h2>
+            <p>
+              كن أول من يعرض منتجًا أو خدمة على ASTRA. ستظهر الإعلانات هنا بعد
+              اعتمادها.
+            </p>
+            <button class="primary-button" data-open-auth="signup">
+              <i data-lucide="plus"></i> أنشئ أول إعلان
+            </button>
+          </section>
+        </div>
+      </section>
+      <section class="market-reviews-view hidden" id="marketReviewsView" data-view="market-reviews">
+        <div class="page-shell market-reviews-shell" id="marketFeedbackContainer"></div>
+      </section>
+      <section class="wanted-products-view hidden" id="wantedProductsView" data-view="wanted-products">
+        <div class="page-shell market-listings-shell">
+          <div class="market-page-heading">
+            <div>
+              <span class="section-kicker"><i data-lucide="package-search"></i> طلبات المجتمع</span>
+              <h1>منتج مش موجود؟</h1>
+              <p>اكتب مواصفاته وأضف صورة، وسيظهر طلبك في هذه الصفحة.</p>
+            </div>
+            <button class="outline-button" data-view-link="market-listings">
+              <i data-lucide="arrow-right"></i> رجوع للمنتجات
+            </button>
+          </div>
+          <form class="wanted-request-form" id="wantedRequestForm">
+            <div class="wanted-form-heading">
+              <span class="market-overview-icon coral"><i data-lucide="plus"></i></span>
+              <div><h2>أضف منتجًا مطلوبًا</h2><p>ساعد المتاجر على معرفة المنتجات التي تبحث عنها.</p></div>
+            </div>
+            <div class="wanted-form-fields">
+              <div class="field">
+                <label for="wantedProductName">اسم المنتج</label>
+                <input id="wantedProductName" name="title" maxlength="100" required placeholder="مثال: سماعة لاسلكية" />
+              </div>
+              <div class="field">
+                <label for="wantedProductDescription">الوصف والمواصفات</label>
+                <textarea id="wantedProductDescription" name="description" maxlength="600" required placeholder="اكتب اللون أو المقاس أو المواصفات المطلوبة"></textarea>
+              </div>
+              <div class="field">
+                <label for="wantedProductImage">صورة المنتج</label>
+                <input id="wantedProductImage" name="image" type="file" accept="image/*" required />
+                <small>صورة واحدة، بحد أقصى ٢ ميجابايت.</small>
+              </div>
+            </div>
+            <button class="primary-button" type="submit"><i data-lucide="send"></i> نشر الطلب</button>
+          </form>
+          <section class="wanted-requests-section" aria-labelledby="wantedRequestsTitle">
+            <div class="wanted-list-heading"><div><span class="section-kicker">طلبات البحث</span><h2 id="wantedRequestsTitle">المنتجات المطلوبة</h2></div><strong id="wantedRequestCount">٠ طلب</strong></div>
+            <div class="wanted-request-grid" id="wantedRequestList"></div>
+          </section>
+        </div>
+      </section>
+      <section class="account-view hidden" id="walletView" data-view="wallet">
+        <div class="page-shell narrow">
+          <div class="section-heading">
+            <div>
+              <span class="section-kicker">الحساب الشخصي</span>
+              <h2>الصفحة الشخصية</h2>
+            </div>
+          </div>
+          <div id="walletContent"></div>
+        </div>
+      </section>
+      <section class="account-view hidden" id="adminView" data-view="admin">
+        <div class="page-shell narrow">
+          <div class="section-heading">
+            <div>
+              <span class="section-kicker">لوحة التحكم</span>
+              <h2>إدارة ASTRA</h2>
+            </div>
+            <button class="outline-button" data-view-link="home">
+              العودة للسوق
+            </button>
+          </div>
+          <div id="adminContent"></div>
+        </div>
+      </section>
+      <section class="account-view help-view hidden" id="helpView" data-view="help">
+        <div class="page-shell help-shell">
+          <div class="help-hero">
+            <div>
+              <span class="section-kicker"><i data-lucide="circle-help"></i> مركز المساعدة</span>
+              <h1>كل اللي تحتاج تعرفه عن <em>ASTRA</em></h1>
+              <p>دليل بسيط يشرح لك طريقة الشراء والبيع وإدارة حسابك خطوة بخطوة.</p>
+            </div>
+            <div class="help-hero-icon"><i data-lucide="book-open-check"></i></div>
+          </div>
+          <div class="help-content">
+            <section class="help-block">
+              <div class="section-heading">
+                <div>
+                  <span class="section-kicker">ابدأ هنا</span>
+                  <h2>طريقة استخدام السوق</h2>
+                </div>
+              </div>
+              <div class="steps">
+                <div>
+                  <b>١</b>
+                  <h3>أنشئ حسابك</h3>
+                  <p>استخدم رقم الموبايل وكلمة المرور، ثم اختر هل أنت عميل أو متجر ومقدم خدمة.</p>
+                </div>
+                <div>
+                  <b>٢</b>
+                  <h3>ابحث واكتشف</h3>
+                  <p>استخدم البحث والتصنيفات للوصول إلى المنتجات والخدمات المنشورة في السوق.</p>
+                </div>
+                <div>
+                  <b>٣</b>
+                  <h3>اشترِ بأمان</h3>
+                  <p>راجع تفاصيل الإعلان والسعر، ثم تابع عملية الشراء ورصيدك من الصفحة الشخصية.</p>
+                </div>
+                <div>
+                  <b>٤</b>
+                  <h3>اعرض ما تقدمه</h3>
+                  <p>من الصفحة الشخصية اختر إضافة إعلان، ثم أرسل منتجك أو خدمتك للمراجعة.</p>
+                </div>
+                <div>
+                  <b>٥</b>
+                  <h3>تابع رصيدك</h3>
+                  <p>يمكنك شحن الرصيد وتحويله ومراجعة سجل العمليات من محفظتك.</p>
+                </div>
+                <div>
+                  <b>٦</b>
+                  <h3>تواصل مع الآخرين</h3>
+                  <p>افتح الملف الشخصي لأي مستخدم لمتابعته أو بدء محادثة معه عند الحاجة.</p>
+                </div>
+              </div>
+            </section>
+            <aside class="help-notice">
+              <i data-lucide="shield-check"></i>
+              <div>
+                <strong>نصيحة مهمة</strong>
+                <p>تأكد من تفاصيل المنتج أو الخدمة قبل الشراء، ولا تشارك كلمة المرور أو بيانات حسابك مع أي شخص.</p>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <div class="brand">
+        <span class="brand-mark"><i data-lucide="orbit"></i></span
+        ><span>ASTRA</span>
+      </div>
+      <span>سوق واضح للناس وأعمالهم الحقيقية.</span
+      ><div class="footer-contact">
+        <span>للتواصل والدعم</span>
+        <div>
+          <a href="tel:+201037572742"><i data-lucide="phone"></i> 01037572742</a>
+          <a
+            href="https://wa.me/201037572742"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="التواصل عبر واتساب"
+            ><i data-lucide="message-circle"></i> واتساب</a
+          >
+        </div>
+      </div>
+      <span class="copyright">© ٢٠٢٦ ASTRA</span>
+    </footer>
+    <button class="market-balance hidden" id="marketBalance" data-view-link="wallet">
+      <span class="market-balance-icon"><i data-lucide="wallet-cards"></i></span>
+      <span class="market-balance-copy"><small>رصيدك الحالي</small><strong id="marketBalanceValue">٠ ج.م</strong></span>
+      <i class="market-balance-arrow" data-lucide="arrow-left"></i>
+    </button>
+    <div class="modal-backdrop hidden" id="authModal">
+      <section
+        class="auth-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="authTitle"
+      >
+        <button class="modal-close" data-close-modal aria-label="إغلاق">
+          <i data-lucide="x"></i>
+        </button>
+        <div class="auth-intro">
+          <span class="brand-mark"><i data-lucide="orbit"></i></span>
+          <h2 id="authTitle">أهلاً بك في ASTRA</h2>
+          <p id="authSubtitle">ادخل إلى حسابك وتابع مشترياتك وإعلاناتك.</p>
+        </div>
+        <div class="auth-tabs">
+          <button class="active" data-auth-tab="login">تسجيل الدخول</button
+          ><button data-auth-tab="signup">إنشاء حساب</button>
+        </div>
+        <form id="authForm">
+          <div class="field signup-only hidden">
+            <label for="authName">الاسم</label
+            ><input
+              id="authName"
+              name="name"
+              autocomplete="name"
+              placeholder="اكتب اسمك"
+            />
+          </div>
+          <div class="field">
+            <label for="authPhone">رقم الموبايل</label
+            ><input
+              id="authPhone"
+              name="phone"
+              type="tel"
+              autocomplete="tel"
+              required
+              placeholder="مثال: 01012345678"
+            />
+          </div>
+          <div class="field">
+            <label for="authPassword">كلمة المرور</label
+            ><div class="password-field"><input
+                id="authPassword"
+                name="password"
+                type="password"
+                minlength="10"
+                autocomplete="current-password"
+                required
+                placeholder="٦ أحرف على الأقل"
+              /><button type="button" class="password-toggle" data-password-target="authPassword" aria-label="إظهار كلمة المرور"><i data-lucide="eye"></i></button></div>
+          </div>
+          <div class="field signup-only hidden">
+            <label for="authPasswordConfirm">تأكيد كلمة المرور</label
+            ><div class="password-field"><input
+                id="authPasswordConfirm"
+                name="passwordConfirm"
+                type="password"
+                minlength="10"
+                autocomplete="new-password"
+                placeholder="أعد كتابة كلمة المرور"
+              /><button type="button" class="password-toggle" data-password-target="authPasswordConfirm" aria-label="إظهار تأكيد كلمة المرور"><i data-lucide="eye"></i></button></div>
+          </div>
+          <div class="account-type signup-only hidden">
+            <span>نوع الحساب</span
+            ><label
+              ><input type="radio" name="role" value="customer" checked /> عميل
+              عادي</label
+            ><label
+              ><input type="radio" name="role" value="store" /> متجر / مقدم
+              خدمة</label
+            ><label
+              ><input type="radio" name="role" value="courier" /> مندوب توصيل</label
+            >
+          </div>
+          <button
+            class="primary-button submit-button"
+            type="submit"
+            id="authSubmit"
+          >
+            دخول الحساب
+          </button>
+          <p class="form-note">استخدم رقم الموبايل فقط للدخول وإنشاء الحساب.</p>
+        </form>
+        <div class="signup-pending hidden" id="signupPendingMessage">
+          <span class="empty-icon"><i data-lucide="clock-3"></i></span>
+          <h3>طلب التفعيل مطلوب</h3>
+          <p>أرسل طلب تفعيل حسابك للمشرف عبر واتساب. لن تتمكن من نشر المنشورات أو الشراء حتى يعتمد المشرف حسابك.</p>
+          <p class="admin-contact">رقم المشرف: <a href="tel:+201037572742">01037572742</a></p>
+          <a class="primary-button submit-button whatsapp-button" id="pendingSignupWhatsApp" href="#" target="_blank" rel="noopener noreferrer"><i data-lucide="message-circle"></i> إرسال طلب التفعيل عبر واتساب</a>
+          <button class="text-button pending-close" type="button" data-close-pending>إغلاق</button>
+        </div>
+      </section>
+    </div>
+    <div class="toast" id="toast">
+      <i data-lucide="check-circle-2"></i><span></span>
+    </div>
+    <div class="modal-backdrop hidden" id="purchaseModal">
+      <section class="listing-modal purchase-modal" role="dialog" aria-modal="true" aria-labelledby="purchaseTitle">
+        <button class="modal-close" data-close-purchase aria-label="إغلاق">
+          <i data-lucide="x"></i>
+        </button>
+        <div class="modal-heading">
+          <span class="empty-icon"><i data-lucide="shopping-cart"></i></span>
+          <div>
+            <span class="section-kicker">إتمام الشراء</span>
+            <h2 id="purchaseTitle">تأكيد طلبك</h2>
+          </div>
+        </div>
+        <div class="purchase-item-summary">
+          <strong id="purchaseListingName">المنتج</strong>
+          <span id="purchaseListingPrice">٠ ج.م</span>
+        </div>
+        <form id="purchaseForm">
+          <input id="purchaseListingId" type="hidden" />
+          <fieldset class="choice-group">
+            <legend>طريقة الدفع</legend>
+            <label class="choice-card selected"><input type="radio" name="paymentMethod" value="balance" checked /><span><i data-lucide="wallet-cards"></i><strong>من رصيدك</strong><small>الدفع يتم فورًا من محفظة ASTRA</small></span></label>
+            <label class="choice-card"><input type="radio" name="paymentMethod" value="cash" /><span><i data-lucide="banknote"></i><strong>نقدًا عند الاستلام</strong><small>ادفع للمندوب أو عند استلام الطلب</small></span></label>
+          </fieldset>
+          <fieldset class="choice-group">
+            <legend>طريقة التسليم</legend>
+            <label class="choice-card selected"><input type="radio" name="deliveryMethod" value="self" checked /><span><i data-lucide="hand-platter"></i><strong>استلام بنفسي</strong><small>بدون رسوم توصيل</small></span></label>
+            <label class="choice-card"><input type="radio" name="deliveryMethod" value="courier" /><span><i data-lucide="truck"></i><strong>توصيل مع مندوب السوق</strong><small>رسوم التوصيل ٥٪ من سعر المنتج</small></span></label>
+          </fieldset>
+          <div class="field hidden" id="purchaseCourierField">
+            <label for="purchaseCourier">اختر المندوب</label>
+            <select id="purchaseCourier">
+              <option value="">اختر مندوبًا</option>
+            </select>
+          </div>
+          <div class="field" id="purchaseLocationField">
+            <label for="purchaseLocation">موقع الاستلام أو التوصيل</label>
+            <input id="purchaseLocation" placeholder="اكتب موقعك أو رابط موقعك" />
+          </div>
+          <div class="purchase-total" id="purchaseTotal"></div>
+          <button class="primary-button submit-button" type="submit"><i data-lucide="check"></i> تأكيد الشراء</button>
+        </form>
+      </section>
+    </div>
+    <div class="modal-backdrop hidden" id="adminAccessModal">
+      <section class="auth-modal admin-gate-dialog" role="dialog" aria-modal="true" aria-labelledby="adminGateTitle">
+        <button class="modal-close" type="button" data-close-admin-access aria-label="إغلاق"><i data-lucide="x"></i></button>
+        <span class="admin-gate-icon"><i data-lucide="circle-alert"></i></span>
+        <span class="section-kicker">مساحة خاصة</span>
+        <h2 id="adminGateTitle">هذه الصفحة مخصصة للمشرفين والمناديب فقط</h2>
+        <p>ستغادر السوق للمتابعة في بوابة العمل المناسبة. يلزم تسجيل الدخول بحساب مخوّل.</p>
+        <div class="admin-gate-actions">
+          <a class="primary-button" href="admin.html"><i data-lucide="layout-dashboard"></i> لوحة الإدارة</a>
+          <a class="outline-button" href="/courier"><i data-lucide="truck"></i> لوحة المندوب</a>
+        </div>
+      </section>
+    </div>
+    <div class="modal-backdrop hidden" id="agentsModal">
+      <section class="listing-modal agents-modal" role="dialog" aria-modal="true" aria-labelledby="agentsTitle">
+        <button class="modal-close" data-close-agents aria-label="إغلاق"><i data-lucide="x"></i></button>
+        <div class="modal-heading"><span class="empty-icon"><i data-lucide="truck"></i></span><div><span class="section-kicker">توصيل موثوق</span><h2 id="agentsTitle">مناديب السوق</h2></div></div>
+        <p class="modal-description">اختر التوصيل مع مندوب السوق، وتظهر رسوم المندوب تلقائيًا حسب سعر المنتج.</p>
+        <div id="agentsContent" class="agents-list"></div>
+      </section>
+    </div>
+    <div class="modal-backdrop hidden" id="listingModal">
+      <section
+        class="listing-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="listingTitle"
+      >
+        <button class="modal-close" data-close-listing aria-label="إغلاق">
+          <i data-lucide="x"></i>
+        </button>
+        <div class="modal-heading">
+          <span class="empty-icon"><i data-lucide="package-plus"></i></span>
+          <div>
+            <span class="section-kicker">إعلان جديد</span>
+            <h2 id="listingTitle">اعرض منتجك أو خدمتك</h2>
+          </div>
+        </div>
+        <form id="listingForm">
+          <div class="form-grid">
+            <div class="field">
+              <label for="listingName">اسم المنتج أو الخدمة</label
+              ><input
+                id="listingName"
+                name="title"
+                required
+                placeholder="مثال: تصميم شعار احترافي"
+              />
+            </div>
+            <div class="field">
+              <label for="listingType">نوع الإعلان</label
+              ><select id="listingType" name="type">
+                <option value="product">منتج</option>
+                <option value="service">خدمة</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="listingCategory">التصنيف</label
+              ><select id="listingCategory" name="category" required>
+                <option value="">اختر التصنيف</option>
+                <option>إلكترونيات</option>
+                <option>المنزل</option>
+                <option>أثاث</option>
+                <option>أجهزة منزلية</option>
+                <option>أزياء</option>
+                <option>سيارات</option>
+                <option>كتب</option>
+                <option>خدمات رقمية</option>
+                <option>أخرى</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="listingPrice">السعر بالجنيه المصري</label
+              ><input
+                id="listingPrice"
+                name="price"
+                type="number"
+                min="1"
+                step="0.01"
+                required
+                placeholder="0.00"
+              />
+            </div>
+          </div>
+          <div class="field">
+            <label for="listingNotes">التفاصيل والملاحظات</label
+            ><textarea
+              id="listingNotes"
+              name="notes"
+              rows="4"
+              required
+              placeholder="اكتب وصفًا واضحًا لما تعرضه..."
+            ></textarea>
+          </div>
+          <div class="field">
+            <label for="listingMedia">صورة أو فيديو</label
+            ><input
+              id="listingMedia"
+              name="media"
+              type="file"
+              accept="image/*,video/*"
+            /><small class="field-hint"
+              >يفضل ملفًا أقل من ٢ ميجابايت. سيظهر الإعلان بعد المراجعة.</small
+            >
+          </div>
+          <div class="field"><label for="listingFacebook">صفحة فيسبوك</label><input id="listingFacebook" name="facebookUrl" type="url" placeholder="https://facebook.com/..." /></div>
+          <div class="fee-preview" id="feePreview">
+            <span>رسوم النشر المتوقعة</span
+            ><strong>أدخل السعر لمعرفة الرسوم</strong>
+          </div>
+          <button class="primary-button submit-button" type="submit">
+            <i data-lucide="send"></i> إرسال الإعلان للمراجعة
+          </button>
+        </form>
+      </section>
+    </div>
+    <div class="modal-backdrop hidden" id="rechargeModal">
+      <section class="listing-modal recharge-modal" role="dialog" aria-modal="true" aria-labelledby="rechargeTitle">
+        <button class="modal-close" data-close-recharge aria-label="إغلاق">
+          <i data-lucide="x"></i>
+        </button>
+        <div class="modal-heading">
+          <span class="empty-icon"><i data-lucide="wallet-cards"></i></span>
+          <div>
+            <span class="section-kicker">شحن الرصيد</span>
+            <h2 id="rechargeTitle">اختر قيمة الشحن</h2>
+          </div>
+        </div>
+        <p class="modal-description">سيتم إضافة الرصيد لحسابك بعد مراجعة طلب الشحن.</p>
+        <div class="transfer-destination">
+          <span>حوّل المبلغ إلى رقم ASTRA</span>
+          <strong>01037572742</strong>
+        </div>
+        <div class="recharge-options">
+          <button type="button" data-recharge-amount="50"><strong>٥٠ ج.م</strong><span>بداية خفيفة</span></button>
+          <button type="button" data-recharge-amount="100"><strong>١٠٠ ج.م</strong><span>الأكثر طلبًا</span></button>
+          <button type="button" data-recharge-amount="250"><strong>٢٥٠ ج.م</strong><span>للاستخدام المتكرر</span></button>
+          <button type="button" data-recharge-amount="500"><strong>٥٠٠ ج.م</strong><span>للمتاجر</span></button>
+        </div>
+        <form id="rechargeForm">
+          <div class="field">
+            <label for="customRechargeAmount">أو اكتب قيمة أخرى</label>
+            <input id="customRechargeAmount" type="number" min="10" step="1" placeholder="من ١٠ ج.م" />
+          </div>
+          <div class="proof-choice">
+            <span>إثبات التحويل</span>
+            <label><input type="radio" name="proofType" value="number" checked /> رقم الهاتف الذي حوّلت منه</label>
+            <label><input type="radio" name="proofType" value="receipt" /> صورة إيصال التحويل</label>
+          </div>
+          <div class="field" id="transferNumberField">
+            <label for="transferNumber">رقم الهاتف المُحوِّل</label>
+            <input id="transferNumber" type="tel" inputmode="tel" placeholder="مثال: 01012345678" />
+          </div>
+          <div class="field hidden" id="transferReceiptField">
+            <label for="transferReceipt">صورة إيصال التحويل</label>
+            <input id="transferReceipt" type="file" accept="image/*" />
+            <small class="field-hint">سيتم فتح واتساب بالطلب، ثم أرفق الصورة في نفس المحادثة.</small>
+          </div>
+          <button class="primary-button submit-button" type="submit"><i data-lucide="send"></i> إرسال طلب الشحن</button>
+        </form>
+      </section>
+    </div>
+    <div class="modal-backdrop hidden" id="transferModal">
+      <section class="listing-modal compact-modal" role="dialog" aria-modal="true" aria-labelledby="transferTitle">
+        <button class="modal-close" data-close-transfer aria-label="إغلاق"><i data-lucide="x"></i></button>
+        <div class="modal-heading"><span class="empty-icon"><i data-lucide="send"></i></span><div><span class="section-kicker">تحويل رصيد</span><h2 id="transferTitle">حوّل إلى حساب آخر</h2></div></div>
+        <form id="transferForm">
+          <div class="field"><label for="transferRecipient">معرّف المستلم</label><input id="transferRecipient" required placeholder="SQ-123456" /></div>
+          <div class="field"><label for="transferAmount">قيمة التحويل</label><input id="transferAmount" type="number" min="1" step="0.01" required placeholder="0.00" /></div>
+          <button class="primary-button submit-button" type="submit">تنفيذ التحويل</button>
+        </form>
+      </section>
+    </div>
+    <div class="modal-backdrop hidden" id="editAccountModal">
+      <section class="listing-modal compact-modal" role="dialog" aria-modal="true" aria-labelledby="editAccountTitle">
+        <button class="modal-close" data-close-edit-account aria-label="إغلاق"><i data-lucide="x"></i></button>
+        <div class="modal-heading"><span class="empty-icon"><i data-lucide="user-round-cog"></i></span><div><span class="section-kicker">بيانات الحساب</span><h2 id="editAccountTitle">تعديل معلوماتي</h2></div></div>
+        <form id="editAccountForm">
+          <div class="field"><label for="editAccountName">الاسم</label><input id="editAccountName" required /></div>
+          <div class="field"><label for="editAccountPhone">رقم الموبايل</label><input id="editAccountPhone" type="tel" required readonly /></div>
+          <div class="field"><label for="editAccountPassword">كلمة مرور جديدة (اختياري)</label><div class="password-field"><input id="editAccountPassword" type="password" minlength="6" placeholder="اتركها فارغة للإبقاء عليها" /><button type="button" class="password-toggle" data-password-target="editAccountPassword" aria-label="إظهار كلمة المرور"><i data-lucide="eye"></i></button></div></div>
+          <div class="field"><label for="editAccountFacebook">صفحة فيسبوك المشروع</label><input id="editAccountFacebook" type="url" placeholder="https://facebook.com/..." /></div>
+          <div class="field"><label for="editAccountLocation">الموقع الجغرافي</label><input id="editAccountLocation" placeholder="العنوان أو رابط خرائط Google" /></div>
+          <button class="primary-button submit-button" type="submit">حفظ التعديلات</button>
+        </form>
+      </section>
+    </div>
+    <div class="modal-backdrop hidden" id="reportModal">
+      <section class="listing-modal report-modal" role="dialog" aria-modal="true" aria-labelledby="reportTitle">
+        <button class="modal-close" data-close-report aria-label="إغلاق"><i data-lucide="x"></i></button>
+        <div class="modal-heading"><span class="empty-icon"><i data-lucide="file-chart-column"></i></span><div><span class="section-kicker">تقرير الحساب</span><h2 id="reportTitle">تقرير المستخدم</h2></div></div>
+        <div id="reportContent"></div>
+      </section>
+    </div>
+    <div class="modal-backdrop hidden" id="notificationsModal">
+      <section class="listing-modal compact-modal" role="dialog" aria-modal="true" aria-labelledby="notificationsTitle">
+        <button class="modal-close" data-close-notifications aria-label="إغلاق"><i data-lucide="x"></i></button>
+        <div class="modal-heading">
+          <span class="empty-icon"><i data-lucide="bell-ring"></i></span>
+          <div>
+            <span class="section-kicker">الإشعارات</span>
+            <h2 id="notificationsTitle">آخر التحديثات</h2>
+          </div>
+        </div>
+        <div id="notificationsList" class="notification-list"></div>
+      </section>
+    </div>
+    <div class="modal-backdrop hidden" id="profileModal">
+      <section class="listing-modal report-modal" role="dialog" aria-modal="true" aria-labelledby="profileTitle">
+        <button class="modal-close" data-close-profile aria-label="إغلاق"><i data-lucide="x"></i></button>
+        <div class="modal-heading">
+          <span class="empty-icon"><i data-lucide="user-round"></i></span>
+          <div>
+            <span class="section-kicker">الملف الشخصي</span>
+            <h2 id="profileTitle">الصفحة الشخصية</h2>
+          </div>
+        </div>
+        <div id="profileContent"></div>
+      </section>
+    </div>
+    <div class="modal-backdrop hidden" id="chatModal">
+      <section class="listing-modal chat-modal" role="dialog" aria-modal="true" aria-labelledby="chatTitle">
+        <button class="modal-close" data-close-chat aria-label="إغلاق"><i data-lucide="x"></i></button>
+        <div class="chat-header">
+          <div>
+            <span class="section-kicker">الدردشة</span>
+            <h2 id="chatTitle">المحادثة</h2>
+          </div>
+        </div>
+        <div id="chatPanel" class="chat-panel"></div>
+        <form id="chatForm" class="chat-form">
+          <input id="chatInput" type="text" placeholder="اكتب رسالتك..." aria-label="رسالة جديدة" />
+          <button class="primary-button" type="submit">إرسال</button>
+        </form>
+      </section>
+    </div>
+    <script src="orbit-1.js?v=activation-mobile-2"></script>
+  </body>
+</html>
